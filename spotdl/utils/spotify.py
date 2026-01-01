@@ -16,8 +16,8 @@ from typing import Dict, Optional
 import requests
 from spotipy import Spotify
 from spotipy.cache_handler import CacheFileHandler, MemoryCacheHandler
-from spotipy.oauth2 import SpotifyClientCredentials, SpotifyOAuth
 from spotipy.exceptions import SpotifyException
+from spotipy.oauth2 import SpotifyClientCredentials, SpotifyOAuth
 
 from spotdl.utils.config import get_cache_path, get_spotify_cache_path
 
