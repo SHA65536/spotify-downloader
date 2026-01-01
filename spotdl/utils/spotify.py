@@ -17,6 +17,7 @@ import requests
 from spotipy import Spotify
 from spotipy.cache_handler import CacheFileHandler, MemoryCacheHandler
 from spotipy.oauth2 import SpotifyClientCredentials, SpotifyOAuth
+from spotipy.exceptions import SpotifyException
 
 from spotdl.utils.config import get_cache_path, get_spotify_cache_path
 
@@ -194,7 +195,7 @@ class SpotifyClient(Spotify, metaclass=Singleton):
         while response is None:
             try:
                 response = self._internal_call("GET", url, payload, kwargs)
-            except (requests.exceptions.Timeout, requests.ConnectionError) as exc:
+            except (requests.exceptions.Timeout, requests.ConnectionError, SpotifyException) as exc:
                 retries -= 1
                 if retries <= 0:
                     raise exc
