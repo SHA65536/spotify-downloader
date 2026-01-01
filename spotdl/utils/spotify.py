@@ -195,7 +195,11 @@ class SpotifyClient(Spotify, metaclass=Singleton):
         while response is None:
             try:
                 response = self._internal_call("GET", url, payload, kwargs)
-            except (requests.exceptions.Timeout, requests.ConnectionError, SpotifyException) as exc:
+            except (
+                requests.exceptions.Timeout,
+                requests.ConnectionError,
+                SpotifyException,
+            ) as exc:
                 retries -= 1
                 if retries <= 0:
                     raise exc
