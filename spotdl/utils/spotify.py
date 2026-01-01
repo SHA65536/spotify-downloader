@@ -199,7 +199,7 @@ class SpotifyClient(Spotify, metaclass=Singleton):
                 if retries <= 0:
                     raise exc
             # Exponential backoff after retry (0.2s -> 0.4s -> 0.8s -> ...)
-            time.sleep(0.2 * (2**(self.max_retries - retries)))
+            time.sleep(0.2 * (2 ** (self.max_retries - retries)))
 
         if use_cache and cache_key is not None:
             self.cache[cache_key] = response
